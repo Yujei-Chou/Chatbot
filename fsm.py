@@ -41,9 +41,10 @@ class TocMachine(GraphMachine):
     def is_going_to_Sitename(self, event):
         text = event.message.text
         try:
-            idx = sitename.index(text)
+            idx = county.index(text)
         except ValueError:
             idx = -1
+        
         if idx != -1:
             return True
         else:
