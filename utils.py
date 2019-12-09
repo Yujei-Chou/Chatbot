@@ -1,5 +1,6 @@
 import os
 import requests
+import urllib3
 from linebot import LineBotApi, WebhookParser
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
@@ -14,6 +15,7 @@ def send_text_message(reply_token, text):
     return "OK"
 
 def AQIParse():
+    requests.packages.urllib3.disable_warnings()
     url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
     dicts = url.json()
     matrix=[]
