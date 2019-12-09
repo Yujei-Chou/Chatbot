@@ -17,10 +17,10 @@ class TocMachine(GraphMachine):
 
     def is_going_to_County(self, event):
         text = event.message.text
-        if text.lower() == "start":
+        if "查詢空氣品質" in text:
             return True
 
-    def is_going_to_result(self, event):
+    def is_going_to_Sitename(self, event):
         text = event.message.text
         if "yes" in text.lower():
             # 爬蟲
@@ -50,7 +50,7 @@ class TocMachine(GraphMachine):
         print("I'm entering end")
 
         reply_token = event.reply_token
-        temp = "Do you want to see movie?"
+        temp = "請輸入想要查詢的縣市"
         send_text_message(reply_token, temp)
         # self.go_back()
 
@@ -58,7 +58,7 @@ class TocMachine(GraphMachine):
         print("Leaving end")
 
 
-    def on_enter_result(self, event):
+    def on_enter_Sitename(self, event):
         print("I'm entering result")
 
         reply_token = event.reply_token
@@ -66,7 +66,7 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, temp)
         self.go_back()
 
-    def on_exit_result(self):
+    def on_exit_Sitename(self):
         print("Leaving result")
 
     def on_enter_state1(self, event):
