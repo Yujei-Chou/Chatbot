@@ -12,12 +12,19 @@ def send_text_message(reply_token, text):
     line_bot_api.reply_message(reply_token, TextSendMessage(text=text))
 
     return "OK"
-"""
+
 def AQIParse():
     url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
     dicts = url.json()
+    matrix=[]
+    i=0
     for data in dicts:
-"""        
+        matrix.append([])
+        matrix[i].append(data["County"])
+        matrix[i].append(data["SiteName"])
+        matrix[i].append(data["AQI"])
+        i+=1
+       
 """
 def send_image_url(id, img_url):
     pass

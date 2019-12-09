@@ -1,7 +1,7 @@
 from transitions.extensions import GraphMachine
 
 from utils import send_text_message
-
+from utils import AQIParse
 
 
 
@@ -15,7 +15,7 @@ class TocMachine(GraphMachine):
             
 
 
-    def is_going_to_end(self, event):
+    def is_going_to_County(self, event):
         text = event.message.text
         if text.lower() == "start":
             return True
@@ -46,7 +46,7 @@ class TocMachine(GraphMachine):
         print("Leaving state1")
 
     
-    def on_enter_end(self, event):
+    def on_enter_County(self, event):
         print("I'm entering end")
 
         reply_token = event.reply_token
@@ -54,7 +54,7 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, temp)
         # self.go_back()
 
-    def on_exit_end(self, event):
+    def on_exit_County(self, event):
         print("Leaving end")
 
 
