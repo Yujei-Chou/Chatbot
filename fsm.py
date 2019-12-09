@@ -60,7 +60,7 @@ class TocMachine(GraphMachine):
     def is_going_to_AQI(self, event):
         text = event.message.text
         try:
-            idx = AQI.index(text)
+            idx = sitename.index(text)
         except ValueError:
             idx = -1
         
