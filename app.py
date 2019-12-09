@@ -38,7 +38,7 @@ machine = TocMachine(
             "trigger": "advance",
             "source": "Sitename",
             "dest": "AQI",
-            "conditions": "is_going_to_state1",
+            "conditions": "is_going_to_AQI",
         },
 
         {"trigger": "go_back", "source": ["menu", "AQI"], "dest": "user" },
