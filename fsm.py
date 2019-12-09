@@ -3,11 +3,21 @@ from transitions.extensions import GraphMachine
 from utils import send_text_message
 from utils import AQIParse
 
-
+county=[]
+sitename=[]
+AQI=[]
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
+        """
+        result=AQIParse()
+        for i in range(0,len(result)):
+            county.append(result[i][0])
+            sitename.append(result[i][1])
+            AQI.append(result[i][2])
+        """
+        print(AQIParse())
 
     def is_going_to_menu(self, event):
         text = event.message.text
