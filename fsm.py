@@ -9,7 +9,7 @@ import urllib3
 county=[]
 sitename=[]
 AQI=[]
-temp_sitename=[]
+SitenameIdx=[]
 
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
@@ -47,11 +47,7 @@ class TocMachine(GraphMachine):
             idx = -1
         
         if idx != -1:
-            SitenameIdx=[i for i in range(len(county)) if county[i] == text]
-            #print(SitenameIdx)
-            
-            for j in range(0,len(SitenameIdx)):
-                print(sitename[SitenameIdx[j]])
+            SitenameIdx=[i for i in range(len(county)) if county[i] == text]    
             
             return True
         else:
@@ -93,7 +89,9 @@ class TocMachine(GraphMachine):
         print("I'm entering Sitename")
 
         reply_token = event.reply_token
-        temp = "請選擇想要查詢的地區"
+        temp = "請選擇想要查詢的地區:\n"
+        for j in range(0,len(SitenameIdx)):
+            temp=temp+sitename[SitenameIdx[j]]
         send_text_message(reply_token, temp)
         self.go_back()
 
