@@ -36,12 +36,12 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
-            "source": "Sitename",
+            "source": "user",
             "dest": "AQI",
             "conditions": "is_going_to_AQI",
         },
         
-        {"trigger": "go_back", "source": ["menu", "County"], "dest": "user" },
+        {"trigger": "go_back", "source": ["menu", "Sitenemae", "AQI"], "dest": "user" },
     ],
 
     initial="user",

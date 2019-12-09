@@ -70,7 +70,7 @@ class TocMachine(GraphMachine):
             return True
         else:
             return False
-
+    
 
     def on_enter_menu(self, event):
         print("I'm entering menu")
@@ -116,7 +116,7 @@ class TocMachine(GraphMachine):
         temp = AQI[query_AQI]
 
         send_text_message(reply_token, temp)
-        #self.go_back()
+        self.go_back()
 
     def on_exit_AQI(self):
         print("Leaving AQI")
