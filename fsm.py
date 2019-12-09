@@ -33,13 +33,12 @@ class TocMachine(GraphMachine):
         requests.packages.urllib3.disable_warnings()
         url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
         dicts = url.json()
-        matrix=[]
 
         for data in dicts:
-            matrix.append(data["County"])
+            county.append(data["County"])
 
         if "查詢空氣品質" in text:
-            print(matrix)
+            print(county)
             return True
 
     def is_going_to_Sitename(self, event):
