@@ -51,8 +51,7 @@ class TocMachine(GraphMachine):
             #print(SitenameIdx)
             
             for j in range(0,len(SitenameIdx)):
-                print(j)
-                print(sitename[j])
+                print(sitename[SitenameIdx[j]])
             
             return True
         else:
