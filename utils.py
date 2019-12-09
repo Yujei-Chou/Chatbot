@@ -21,10 +21,10 @@ def AQIParse():
     matrix=[]
     i=0
     for data in dicts:
-        matrix.append([])
-        matrix[i].append(data["County"])
-        matrix[i].append(data["SiteName"])
-        matrix[i].append(data["AQI"])
+        #matrix.append([])
+        matrix.append(data["County"])
+        #matrix[i].append(data["SiteName"])
+        #matrix[i].append(data["AQI"])
         i+=1
 def testfcn():
     text="test function"
