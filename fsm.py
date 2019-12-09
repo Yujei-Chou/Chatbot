@@ -109,7 +109,7 @@ class TocMachine(GraphMachine):
     def on_exit_Sitename(self):
         print("Leaving Sitename")
 
-    def on_enter_AQI(self,event):
+    def on_enter_AQI(self, event):
         print("I'm entering AQI")
 
         reply_token = event.reply_token
