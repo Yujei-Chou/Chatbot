@@ -13,6 +13,13 @@ AQI=[]
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
+        requests.packages.urllib3.disable_warnings()
+        url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
+        dicts = url.json()
+
+        for data in dicts:
+            county.append(data["County"])
+
         print("=============test===============")
         """
         result=AQIParse()
@@ -31,15 +38,16 @@ class TocMachine(GraphMachine):
 
     def is_going_to_County(self, event):
         text = event.message.text
+        """
         requests.packages.urllib3.disable_warnings()
         url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
         dicts = url.json()
 
         for data in dicts:
             county.append(data["County"])
-
+        """
         if "查詢空氣品質" in text:
-            # print(county)
+            print(len(county))
             return True
 
     def is_going_to_Sitename(self, event):
