@@ -5,11 +5,11 @@ from utils import AQIParse
 from utils import testfcn
 import requests
 import urllib3
-
+"""
 county=[]
 sitename=[]
 AQI=[]
-
+"""
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
@@ -20,6 +20,9 @@ class TocMachine(GraphMachine):
             sitename.append(result[i][1])
             AQI.append(result[i][2])
         """
+        county=[]
+        sitename=[]
+        AQI=[]
         #print(AQIParse())
 
     def is_going_to_menu(self, event):
