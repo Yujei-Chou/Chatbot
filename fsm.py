@@ -92,12 +92,13 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
         temp = "請選擇想要查詢的地區:\n"
-        print("ya~~~~~")
-        print(query_SiteIdx)
-        """
-        for j in range(0,len(SitenameIdx)):
-            print(sitename[SitenameIdx[j]])
-        """
+        #print("ya~~~~~")
+        #print(query_SiteIdx)
+        
+        for j in range(0,len(query_SiteIdx)):
+            temp=temp+sitename[query_SiteIdx[j]]+"\n"
+            #print(sitename[query_SiteIdx[j]])
+        
         send_text_message(reply_token, temp)
         self.go_back()
 
