@@ -104,7 +104,7 @@ class TocMachine(GraphMachine):
             temp=temp+sitename[query_SiteIdx[j]]+"\n"
         
         send_text_message(reply_token, temp)
-        #self.go_back()
+        self.go_back()
 
     def on_exit_Sitename(self):
         print("Leaving Sitename")
@@ -114,8 +114,9 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
         temp = AQI[query_AQI]
+
         send_text_message(reply_token, temp)
-        self.go_back()
+        #self.go_back()
 
     def on_exit_AQI(self):
         print("Leaving AQI")

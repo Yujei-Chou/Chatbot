@@ -40,8 +40,8 @@ machine = TocMachine(
             "dest": "AQI",
             "conditions": "is_going_to_AQI",
         },
-
-        {"trigger": "go_back", "source": ["menu", "AQI"], "dest": "user" },
+        
+        {"trigger": "go_back", "source": ["menu", "County"], "dest": "user" },
     ],
 
     initial="user",
