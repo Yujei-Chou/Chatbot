@@ -64,6 +64,7 @@ class TocMachine(GraphMachine):
         except ValueError:
             idx = -1
         
+        print(idx)
         if idx != -1:
             query_AQI = idx
             return True
