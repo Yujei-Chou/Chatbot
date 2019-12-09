@@ -19,16 +19,11 @@ class TocMachine(GraphMachine):
 
         for data in dicts:
             county.append(data["County"])
+            sitename.append(data["SiteName"])
+            AQI.append(data["AQI"])
 
         print("=============test===============")
-        """
-        result=AQIParse()
-        for i in range(0,len(result)):
-            county.append(result[i][0])
-            sitename.append(result[i][1])
-            AQI.append(result[i][2])
-        """
-        #print(AQIParse())
+
 
     def is_going_to_menu(self, event):
         text = event.message.text
@@ -38,20 +33,23 @@ class TocMachine(GraphMachine):
 
     def is_going_to_County(self, event):
         text = event.message.text
-        """
-        requests.packages.urllib3.disable_warnings()
-        url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
-        dicts = url.json()
-
-        for data in dicts:
-            county.append(data["County"])
-        """
+        
         if "查詢空氣品質" in text:
             print(len(county))
             return True
 
     def is_going_to_Sitename(self, event):
         text = event.message.text
+        try:
+            idx = sitename.index(text)
+        except ValueError:
+            idx = -1
+        if idx != -1:
+            return True
+        else:
+            send_text_message(reply_token, "輸入錯誤")
+            return True
+        """
         if "yes" in text.lower():
             # 爬蟲
             return True
@@ -59,7 +57,7 @@ class TocMachine(GraphMachine):
             send_text_message(reply_token, "哈哈哈")
             # 爬蟲
             return True
-
+        """
     def is_going_to_state1(self, event):
         text = event.message.text
         return text.lower() == "go to state1"
@@ -73,7 +71,7 @@ class TocMachine(GraphMachine):
         self.go_back()
 
     def on_exit_menu(self):
-        print("Leaving state1")
+        print("Leaving menu")
 
     
     def on_enter_County(self, event):
@@ -85,14 +83,14 @@ class TocMachine(GraphMachine):
         # self.go_back()
 
     def on_exit_County(self, event):
-        print("Leaving end")
+        print("Leaving County")
 
 
     def on_enter_Sitename(self, event):
-        print("I'm entering result")
+        print("I'm entering Sitename")
 
         reply_token = event.reply_token
-        temp = "which movie?"
+        temp = "確定嗎？"
         send_text_message(reply_token, temp)
         self.go_back()
 
