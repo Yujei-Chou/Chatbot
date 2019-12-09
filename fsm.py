@@ -3,6 +3,8 @@ from transitions.extensions import GraphMachine
 from utils import send_text_message
 from utils import AQIParse
 from utils import testfcn
+import requests
+import urllib3
 
 county=[]
 sitename=[]
@@ -28,9 +30,16 @@ class TocMachine(GraphMachine):
 
     def is_going_to_County(self, event):
         text = event.message.text
-        result=AQIParse()
+        requests.packages.urllib3.disable_warnings()
+        url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
+        dicts = url.json()
+        matrix=[]
+
+        for data in dicts:
+            matrix.append(data["County"])
+
         if "查詢空氣品質" in text:
-            print(result)
+            print(matrix)
             return True
 
     def is_going_to_Sitename(self, event):
