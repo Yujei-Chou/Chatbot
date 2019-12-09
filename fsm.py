@@ -13,6 +13,7 @@ AQI=[]
 class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
+        print(test)
         """
         result=AQIParse()
         for i in range(0,len(result)):
