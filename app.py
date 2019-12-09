@@ -30,7 +30,7 @@ machine = TocMachine(
         },
         {
             "trigger": "advance",
-            "source": "end",
+            "source": "County",
             "dest": "result",
             "conditions": "is_going_to_result",
         },
