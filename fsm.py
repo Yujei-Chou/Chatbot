@@ -48,8 +48,8 @@ class TocMachine(GraphMachine):
         if idx != -1:
             return True
         else:
-            send_text_message(reply_token, "輸入錯誤")
-            return True
+            # send_text_message(reply_token, "輸入錯誤")
+            return False
         """
         if "yes" in text.lower():
             # 爬蟲
