@@ -14,35 +14,54 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2", "state3", "state4"],
+    states=["user", "menu", "timetable", "date", "time", "start", "end", "result"],
     transitions=[
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
+            "dest": "menu",
+            "conditions": "is_going_to_menu",
         },
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
+            "dest": "timetable",
+            "conditions": "is_going_to_timetable",
         },
         {
             "trigger": "advance",
-            "source": "user",
-            "dest": "state3",
-            "conditions": "is_going_to_state3",
+            "source": "timetable",
+            "dest": "date",
+            "conditions": "is_going_to_date",
         },
         {
             "trigger": "advance",
-            "source": "state1",
-            "dest": "state4",
-            "conditions": "is_going_to_state4",
+            "source": "date",
+            "dest": "time",
+            "conditions": "is_going_to_time",
         },
-        {"trigger": "go_back", "source": ["state2", "state3" ,"state4"], "dest": "user"},
+        {
+            "trigger": "advance",
+            "source": "time",
+            "dest": "start",
+            "conditions": "is_going_to_start",
+        },
+        {
+            "trigger": "advance",
+            "source": "start",
+            "dest": "end",
+            "conditions": "is_going_to_end",
+        },
+        {
+            "trigger": "advance",
+            "source": "end",
+            "dest": "result",
+            "conditions": "is_going_to_result",
+        },
 
+        {"trigger": "go_back", "source": ["menu","result"], "dest": "user" },
     ],
+
     initial="user",
     auto_transitions=False,
     show_conditions=True,
