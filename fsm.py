@@ -48,8 +48,12 @@ class TocMachine(GraphMachine):
         
         if idx != -1:
             SitenameIdx=[i for i in range(len(county)) if county[i] == text]
+            print(SitenameIdx)
+            """
             for j in range(0,len(SitenameIdx)):
+                print(j)
                 print(sitename[j])
+            """
             return True
         else:
             # send_text_message(reply_token, "輸入錯誤")
