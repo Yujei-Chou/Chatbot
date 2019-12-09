@@ -17,7 +17,7 @@ class TocMachine(GraphMachine):
             sitename.append(result[i][1])
             AQI.append(result[i][2])
         """
-        print(AQIParse())
+        #print(AQIParse())
 
     def is_going_to_menu(self, event):
         text = event.message.text
@@ -28,6 +28,7 @@ class TocMachine(GraphMachine):
     def is_going_to_County(self, event):
         text = event.message.text
         if "查詢空氣品質" in text:
+            print(AQIParse())
             return True
 
     def is_going_to_Sitename(self, event):
