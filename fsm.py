@@ -91,7 +91,7 @@ class TocMachine(GraphMachine):
         reply_token = event.reply_token
         temp = "請選擇想要查詢的地區:\n"
         for j in range(0,len(SitenameIdx)):
-            temp=temp+sitename[SitenameIdx[j]]
+            print(sitename[SitenameIdx[j]])
         send_text_message(reply_token, temp)
         self.go_back()
 
