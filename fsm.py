@@ -28,7 +28,8 @@ class TocMachine(GraphMachine):
     def is_going_to_County(self, event):
         text = event.message.text
         if "查詢空氣品質" in text:
-            print(AQIParse())
+            result=AQIParse()
+            print(result)
             return True
 
     def is_going_to_Sitename(self, event):
