@@ -74,7 +74,7 @@ class TocMachine(GraphMachine):
 
     
     def on_enter_County(self, event):
-        print("I'm entering end")
+        print("I'm entering County")
 
         reply_token = event.reply_token
         temp = "請輸入想要查詢的縣市"
@@ -90,8 +90,12 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
         temp = "請選擇想要查詢的地區:\n"
+        print("ya~~~~~")
+        print(SitenameIdx)
+        """
         for j in range(0,len(SitenameIdx)):
             print(sitename[SitenameIdx[j]])
+        """
         send_text_message(reply_token, temp)
         self.go_back()
 
