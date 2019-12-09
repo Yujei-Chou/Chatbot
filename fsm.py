@@ -56,7 +56,9 @@ class TocMachine(GraphMachine):
         else:
             # send_text_message(reply_token, "輸入錯誤")
             return False
-    
+
+
+
     def on_enter_menu(self, event):
         print("I'm entering menu")
         reply_token = event.reply_token
