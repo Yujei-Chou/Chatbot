@@ -57,22 +57,6 @@ class TocMachine(GraphMachine):
             # send_text_message(reply_token, "輸入錯誤")
             return False
     
-    def is_going_to_AQI(self, event):
-        
-        text = event.message.text
-        try:
-            idx = sitename.index(text)
-        except ValueError:
-            idx = -1
-        
-        print(idx)
-        if idx != -1:
-            query_AQI = idx
-            return True
-        else:
-            return False
-    
-
     def on_enter_menu(self, event):
         print("I'm entering menu")
         reply_token = event.reply_token
@@ -111,16 +95,4 @@ class TocMachine(GraphMachine):
     def on_exit_Sitename(self):
         print("Leaving Sitename")
 
-    def on_enter_AQI(self, event):
-        print("I'm entering AQI")
-
-        reply_token = event.reply_token
-        #temp = AQI[query_AQI]
-        temp = "fuck"
-
-        send_text_message(reply_token, temp)
-        self.go_back()
-
-    def on_exit_AQI(self):
-        print("Leaving AQI")
 
