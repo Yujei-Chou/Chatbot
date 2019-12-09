@@ -26,7 +26,9 @@ def AQIParse():
         matrix[i].append(data["SiteName"])
         matrix[i].append(data["AQI"])
         i+=1
-       
+def testfcn():
+    text="test function"
+    return text
 """
 def send_image_url(id, img_url):
     pass

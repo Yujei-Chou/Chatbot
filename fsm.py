@@ -2,6 +2,7 @@ from transitions.extensions import GraphMachine
 
 from utils import send_text_message
 from utils import AQIParse
+from utils import testfcn
 
 county=[]
 sitename=[]
@@ -29,7 +30,7 @@ class TocMachine(GraphMachine):
         text = event.message.text
         if "查詢空氣品質" in text:
             result=AQIParse()
-            print(result)
+            print(testfcn())
             return True
 
     def is_going_to_Sitename(self, event):
