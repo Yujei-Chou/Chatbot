@@ -34,7 +34,7 @@ machine = TocMachine(
             "dest": "Sitename",
             "conditions": "is_going_to_Sitename",
         },
-        
+ 
         {"trigger": "go_back", "source": ["menu", "Sitenemae"], "dest": "user" },
     ],
 

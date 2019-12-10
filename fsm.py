@@ -46,7 +46,7 @@ class TocMachine(GraphMachine):
             idx = county.index(text)
         except ValueError:
             idx = -1
-        
+
         if idx != -1:
             SitenameIdx=[i for i in range(len(county)) if county[i] == text]    
             for j in range(0,len(SitenameIdx)):
@@ -88,10 +88,10 @@ class TocMachine(GraphMachine):
 
         reply_token = event.reply_token
         temp = "請選擇想要查詢的地區:\n"
-        
+ 
         for j in range(0,len(query_SiteIdx)):
             temp=temp+sitename[query_SiteIdx[j]]+"\n"
-        
+
         send_text_message(reply_token, temp)
         self.go_back()
 
