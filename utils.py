@@ -1,9 +1,10 @@
 import os
-import requests
-import urllib3
-from linebot import LineBotApi, WebhookParser
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
+from linebot import LineBotApi, WebhookParser
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
+
+import requests
+#from bs4 import BeautifulSoup
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
 
@@ -14,21 +15,12 @@ def send_text_message(reply_token, text):
 
     return "OK"
 
-def AQIParse():
-    requests.packages.urllib3.disable_warnings()
-    url = requests.get("https://opendata.epa.gov.tw/ws/Data/AQI/?$format=json",verify=False)
-    dicts = url.json()
-    matrix=[]
-    i=0
-    for data in dicts:
-        #matrix.append([])
-        matrix.append(data["County"])
-        #matrix[i].append(data["SiteName"])
-        #matrix[i].append(data["AQI"])
-        i+=1
-def testfcn():
-    text="test function"
-    return text
+def send_img_message(reply_token, img_orig_url, img_prev_url):
+    line_bot_api = LineBotApi(channel_access_token)
+    line_bot_api.reply_message(reply_token, ImageSendMessage(img_orig_url,img_prev_url))
+
+    return "OK"
+
 """
 def send_image_url(id, img_url):
     pass

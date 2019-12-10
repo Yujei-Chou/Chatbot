@@ -118,7 +118,8 @@ def webhook_handler():
         print(f"REQUEST BODY: \n{body}")
         response = machine.advance(event)
         if response == False:
-            send_text_message(event.reply_token, "Not Entering any State")
+            temp = "輸入錯誤,請重新輸入\n" + "(注意縣市名是否輸入繁體字 ex:臺中市)"
+            send_text_message(event.reply_token, temp)
 
     return "OK"
 
