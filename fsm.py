@@ -33,14 +33,14 @@ class TocMachine(GraphMachine):
             
 
 
-    def is_going_to_County(self, event):
+    def is_going_to_county(self, event):
         text = event.message.text
 
         if "查詢空氣品質" in text:
             print(len(county))
             return True
 
-    def is_going_to_Sitename(self, event):
+    def is_going_to_sitename(self, event):
         text = event.message.text
         try:
             idx = county.index(text)
@@ -71,7 +71,7 @@ class TocMachine(GraphMachine):
         print("Leaving menu")
 
 
-    def on_enter_County(self, event):
+    def on_enter_county(self, event):
         print("I'm entering County")
 
         reply_token = event.reply_token
@@ -79,11 +79,11 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, temp)
         # self.go_back()
 
-    def on_exit_County(self, event):
+    def on_exit_county(self, event):
         print("Leaving County")
 
 
-    def on_enter_Sitename(self, event):
+    def on_enter_sitename(self, event):
         print("I'm entering Sitename")
 
         reply_token = event.reply_token
@@ -95,7 +95,5 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, temp)
         self.go_back()
 
-    def on_exit_Sitename(self):
+    def on_exit_sitename(self):
         print("Leaving Sitename")
-
-
