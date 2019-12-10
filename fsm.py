@@ -1,8 +1,6 @@
 from transitions.extensions import GraphMachine
 
 from utils import send_text_message
-from utils import AQIParse
-from utils import testfcn
 import requests
 import urllib3
 
@@ -24,20 +22,15 @@ class TocMachine(GraphMachine):
             sitename.append(data["SiteName"])
             AQI.append(data["AQI"])
 
-        print("=============test===============")
-
 
     def is_going_to_menu(self, event):
         text = event.message.text
         return text.lower() == "hi"
-            
 
 
     def is_going_to_county(self, event):
         text = event.message.text
-
-        if "查詢空氣品質" in text:
-            print(len(county))
+        if "查詢空氣品質" in text.lower():
             return True
 
     def is_going_to_sitename(self, event):
@@ -57,43 +50,71 @@ class TocMachine(GraphMachine):
             # send_text_message(reply_token, "輸入錯誤")
             return False
 
+    def is_going_to_result(self, event):
+        text = event.message.text
+        if "大園" in text.lower():
+            # 爬蟲
+            return True
+        else:
+            send_text_message(reply_token, "哈哈哈")
+            # 爬蟲
+            return True
 
+ 
 
 
 
     def on_enter_menu(self, event):
         print("I'm entering menu")
+
         reply_token = event.reply_token
-        send_text_message(reply_token, "Hello")
+        temp="Hello"
+        send_text_message(reply_token, temp)
         self.go_back()
 
     def on_exit_menu(self):
         print("Leaving menu")
 
-
+    
     def on_enter_county(self, event):
-        print("I'm entering County")
+        print("I'm entering county")
 
+        reply_token = event.reply_token
         reply_token = event.reply_token
         temp = "請輸入想要查詢的縣市"
         send_text_message(reply_token, temp)
         # self.go_back()
 
     def on_exit_county(self, event):
-        print("Leaving County")
-
-
+        print("Leaving county")
+    
     def on_enter_sitename(self, event):
-        print("I'm entering Sitename")
+        print("I'm entering sitename")
 
         reply_token = event.reply_token
         temp = "請選擇想要查詢的地區:\n"
  
         for j in range(0,len(query_SiteIdx)):
             temp=temp+sitename[query_SiteIdx[j]]+"\n"
+        query_SiteIdx.clear()
+        send_text_message(reply_token, temp)
+        # self.go_back()
 
+    def on_exit_sitename(self, event):
+        print("Leaving sitename")
+
+    def on_enter_result(self, event):
+        print("I'm entering result")
+
+        reply_token = event.reply_token
+        temp = "wait for second"
+ 
         send_text_message(reply_token, temp)
         self.go_back()
 
-    def on_exit_sitename(self):
-        print("Leaving Sitename")
+    def on_exit_result(self):
+        print("Leaving result")
+
+    
+
+
