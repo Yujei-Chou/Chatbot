@@ -50,7 +50,7 @@ Every time `user` state is triggered to `advance` to another state, it will `go_
 		* Go to "activity"
 		
 * menu
-	* Reply:
+	* Reply:  
 		1.輸入 查詢空氣品質 ,可查各地區的AQI值  
 		2.輸入 AQI:(你要查詢的值) 對健康影響  
 		3.輸入AQI:(你要查詢的值) 活動建議  
