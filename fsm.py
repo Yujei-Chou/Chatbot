@@ -58,7 +58,6 @@ class TocMachine(GraphMachine):
 
             return True
         else:
-            # send_text_message(reply_token, "輸入錯誤")
             return False
 
     def is_going_to_result(self, event):
