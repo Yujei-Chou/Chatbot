@@ -96,6 +96,7 @@ Every time `user` state is triggered to `advance` to another state, it will `go_
 	* Go back to "user"
 * county
 	* Reply:請輸入想要查詢的縣市
+	
 	* Go to "sitename"
 * sitename
 	* Reply:請選擇想要查詢的地區
